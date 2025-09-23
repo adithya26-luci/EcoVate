@@ -2,11 +2,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { BarChartIcon, GaugeIcon, MapPinIcon, LeafIcon, SettingsIcon } from 'lucide-react';
+import { BarChartIcon, GaugeIcon, MapPinIcon, TreePine, SettingsIcon } from 'lucide-react';
 
 const navigationItems = [
   { name: 'Dashboard', icon: <GaugeIcon className="h-5 w-5" />, path: '/' },
-  { name: 'Projects', icon: <LeafIcon className="h-5 w-5" />, path: '/projects' },
+  { name: 'Projects', icon: <TreePine className="h-5 w-5" />, path: '/projects' },
   { name: 'Map', icon: <MapPinIcon className="h-5 w-5" />, path: '/map' },
   { name: 'Analytics', icon: <BarChartIcon className="h-5 w-5" />, path: '/analytics' },
   { name: 'Settings', icon: <SettingsIcon className="h-5 w-5" />, path: '/settings' },
@@ -19,12 +19,12 @@ const Sidebar: React.FC = () => {
     <aside className="hidden md:flex flex-col w-64 bg-white border-r border-slate-200 shadow-sm">
       <div className="p-4 border-b border-gray-100">
         <div className="flex items-center gap-3">
-          <div className="bg-green-600 p-2 rounded-xl">
-            <LeafIcon className="h-5 w-5 text-white" />
+          <div className="bg-gradient-to-br from-green-600 to-emerald-700 p-2.5 rounded-xl shadow-sm">
+            <TreePine className="h-6 w-6 text-white" />
           </div>
           <div>
-            <span className="text-xl font-bold text-gray-800">EcoVate</span>
-            <p className="text-xs text-gray-500">Your carbon footprint companion</p>
+            <span className="text-xl font-bold bg-gradient-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent">EcoVate</span>
+            <p className="text-xs text-gray-500">Sustainable Solutions</p>
           </div>
         </div>
       </div>

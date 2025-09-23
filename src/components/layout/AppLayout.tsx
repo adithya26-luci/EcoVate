@@ -1,7 +1,7 @@
 
 import React, { ReactNode, useState } from 'react';
 import Sidebar from './Sidebar';
-import { Menu, LogIn, Bot } from 'lucide-react';
+import { Menu, LogIn, Bot, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useUser } from '@/contexts/UserContext';
@@ -17,7 +17,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
   const [chatbotOpen, setChatbotOpen] = useState(false);
-  const { isAuthenticated } = useUser();
+  const { isAuthenticated, logout } = useUser();
   const isMobile = useIsMobile();
   
   const toggleSidebar = () => {
@@ -52,18 +52,48 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
               <span className="sr-only">Toggle Sidebar</span>
             </Button>
           )}
-          <div className={`${isMobile ? 'self-end' : 'ml-auto'}`}>
+          <div className="flex items-center space-x-2">
             {isAuthenticated ? (
-              <UserMenu />
+              <>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                  onClick={() => {
+                    logout();
+                    window.location.href = '/signin';
+                  }}
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Sign Out</span>
+                </Button>
+                <UserMenu />
+              </>
             ) : (
-              <Button 
-                onClick={() => setAuthDialogOpen(true)}
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+              <Button
+                variant="outline"
+                size="sm"
+                className="gap-2"
+                onClick={() => window.location.href = '/signin'}
               >
-                <LogIn className="h-4 w-4 mr-2" />
-                Sign In
+                <LogIn className="h-4 w-4" />
+                <span>Sign In</span>
               </Button>
             )}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setChatbotOpen(!chatbotOpen)}
+              className="relative"
+            >
+              <Bot className="h-4 w-4" />
+              {chatbotOpen && (
+                <span className="absolute -right-1 -top-1 flex h-3 w-3">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/75 opacity-75"></span>
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-primary"></span>
+                </span>
+              )}
+            </Button>
           </div>
         </div>
         {children}

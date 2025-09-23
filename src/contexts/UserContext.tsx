@@ -47,6 +47,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   }, []);
 
+  const isAuthenticated = !!user;
+
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       if (!email || !password) {
@@ -146,8 +148,21 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     register,
     logout,
     updateProfile,
-    isAuthenticated: !!user,
+    isAuthenticated,
   };
 
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider
+      value={{
+        user,
+        login,
+        register,
+        logout,
+        updateProfile,
+        isAuthenticated,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };

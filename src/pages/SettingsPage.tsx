@@ -5,10 +5,9 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Camera, User, Eye, EyeOff, Bot } from 'lucide-react';
+import { Camera, User, Eye, EyeOff } from 'lucide-react';
 import { useUser } from '@/contexts/UserContext';
 import { toast } from '@/components/ui/sonner';
-import ChatbotWidget from '@/components/ChatbotWidget';
 
 const SettingsPage: React.FC = () => {
   const { user, updateProfile } = useUser();
@@ -17,7 +16,6 @@ const SettingsPage: React.FC = () => {
   const [organization, setOrganization] = useState('ECOVATE Network');
   const [profilePicture, setProfilePicture] = useState(user?.profilePicture || '');
   const [showApiKey, setShowApiKey] = useState(false);
-  const [showChatbot, setShowChatbot] = useState(false);
   const [apiKey] = useState('sk_eco_abc123def456ghi789jkl012mno345pqr');
 
   const handleSaveProfile = () => {
@@ -161,37 +159,6 @@ const SettingsPage: React.FC = () => {
         
         <Card>
           <CardHeader>
-            <CardTitle>AI Assistant</CardTitle>
-            <CardDescription>Chat with our AI assistant for help and support</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="font-medium">Enable Chatbot</div>
-                <div className="text-sm text-slate-500">Get instant help from our AI assistant</div>
-              </div>
-              <Switch 
-                checked={showChatbot}
-                onCheckedChange={setShowChatbot}
-              />
-            </div>
-            
-            {showChatbot && (
-              <div className="mt-4">
-                <Button 
-                  onClick={() => setShowChatbot(true)}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
-                >
-                  <Bot className="h-4 w-4 mr-2" />
-                  Open Chat Assistant
-                </Button>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
             <CardTitle>Notification Preferences</CardTitle>
             <CardDescription>Configure how you receive alerts and notifications</CardDescription>
           </CardHeader>
@@ -230,8 +197,6 @@ const SettingsPage: React.FC = () => {
           </CardContent>
         </Card>
       </div>
-
-      {showChatbot && <ChatbotWidget onClose={() => setShowChatbot(false)} />}
     </div>
   );
 };
