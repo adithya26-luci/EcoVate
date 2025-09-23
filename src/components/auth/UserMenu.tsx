@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -12,6 +13,7 @@ import { toast } from '@/components/ui/sonner';
 
 const UserMenu: React.FC = () => {
   const { user, logout, updateProfile } = useUser();
+  const navigate = useNavigate();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [profileName, setProfileName] = useState(user?.name || '');
   const [profilePicture, setProfilePicture] = useState(user?.profilePicture || '');
@@ -19,6 +21,7 @@ const UserMenu: React.FC = () => {
   const handleLogout = () => {
     logout();
     toast.success('Logged out successfully');
+    navigate('/signin');
   };
 
   const handleProfileUpdate = (e: React.FormEvent) => {

@@ -1,5 +1,6 @@
 
 import React, { ReactNode, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import { Menu, LogIn, Bot, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -19,6 +20,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const [chatbotOpen, setChatbotOpen] = useState(false);
   const { isAuthenticated, logout } = useUser();
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -61,7 +63,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                   className="gap-2"
                   onClick={() => {
                     logout();
-                    window.location.href = '/signin';
+                    navigate('/signin');
                   }}
                 >
                   <LogOut className="h-4 w-4" />
@@ -74,7 +76,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                 variant="outline"
                 size="sm"
                 className="gap-2"
-                onClick={() => window.location.href = '/signin'}
+                onClick={() => navigate('/signin')}
               >
                 <LogIn className="h-4 w-4" />
                 <span>Sign In</span>
