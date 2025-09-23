@@ -14,6 +14,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import MapPage from "./pages/MapPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import SettingsPage from "./pages/SettingsPage";
+import ProjectProgressPage from "./pages/ProjectProgressPage";
 import AppLayout from "./components/layout/AppLayout";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
@@ -82,6 +83,16 @@ const AppRoutes = () => {
           <ProtectedRoute>
             <AppLayout>
               <SettingsPage />
+            </AppLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/progress"
+        element={
+          <ProtectedRoute>
+            <AppLayout>
+              <ProjectProgressPage />
             </AppLayout>
           </ProtectedRoute>
         }

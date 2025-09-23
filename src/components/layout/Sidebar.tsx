@@ -2,11 +2,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { BarChartIcon, GaugeIcon, MapPinIcon, TreePine, SettingsIcon } from 'lucide-react';
+import { BarChartIcon, GaugeIcon, MapPinIcon, TreePine, SettingsIcon, TrendingUp } from 'lucide-react';
 
 const navigationItems = [
   { name: 'Dashboard', icon: <GaugeIcon className="h-5 w-5" />, path: '/' },
   { name: 'Projects', icon: <TreePine className="h-5 w-5" />, path: '/projects' },
+  { name: 'Progress', icon: <TrendingUp className="h-5 w-5" />, path: '/progress' },
   { name: 'Map', icon: <MapPinIcon className="h-5 w-5" />, path: '/map' },
   { name: 'Analytics', icon: <BarChartIcon className="h-5 w-5" />, path: '/analytics' },
   { name: 'Settings', icon: <SettingsIcon className="h-5 w-5" />, path: '/settings' },

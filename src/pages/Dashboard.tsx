@@ -7,6 +7,7 @@ import CarbonOffsetTable from '@/components/dashboard/CarbonOffsetTable';
 import CarbonCreditsCalculator from '@/components/dashboard/CarbonCreditsCalculator';
 import CarbonEmissionCalculator from '@/components/dashboard/CarbonEmissionCalculator';
 import TipsCard from '@/components/dashboard/TipsCard';
+import ProjectProgress from '@/components/dashboard/ProjectProgress';
 import { mockSensors, generateHistoricalData } from '@/lib/mockData';
 import { useUserData } from '@/contexts/UserDataContext';
 
@@ -118,6 +119,9 @@ const Dashboard: React.FC = () => {
           </div>
 
           <TipsCard />
+          
+          {/* Project Progress */}
+          <ProjectProgress />
         </div>
       </div>
 
