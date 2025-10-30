@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useUser } from '@/contexts/UserContext';
 import { toast } from '@/components/ui/sonner';
+import EmojiEyes from '@/components/ui/EmojiEyes';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -33,6 +34,7 @@ const SignIn = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
+          <EmojiEyes />
           <CardTitle className="text-2xl font-bold text-center">Sign in to EcoVate</CardTitle>
           <CardDescription className="text-center">
             Enter your email and password to access your account

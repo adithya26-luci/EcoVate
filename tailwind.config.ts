@@ -1,3 +1,4 @@
+/// <reference types="node" />
 
 import type { Config } from "tailwindcss";
 
@@ -24,7 +25,7 @@ export default {
 				border: '#e5e7eb',
 				input: '#f3f4f6',
 				ring: '#9ca3af',
-				background: '#ffffff',
+				background: '#e6f7f2', // Light bluish-green background
 				foreground: '#1f2937',
 				
 				// Primary - Soft green

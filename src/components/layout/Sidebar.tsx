@@ -20,8 +20,12 @@ const Sidebar: React.FC = () => {
     <aside className="hidden md:flex flex-col w-64 bg-white border-r border-slate-200 shadow-sm">
       <div className="p-4 border-b border-gray-100">
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-to-br from-green-600 to-emerald-700 p-2.5 rounded-xl shadow-sm">
-            <TreePine className="h-6 w-6 text-white" />
+          <div className="h-12 w-12 rounded-xl overflow-hidden">
+            <img 
+              src="/ecovate-logo.jpg" 
+              alt="EcoVate Logo" 
+              className="h-full w-full object-cover"
+            />
           </div>
           <div>
             <span className="text-xl font-bold bg-gradient-to-r from-green-600 to-emerald-700 bg-clip-text text-transparent">EcoVate</span>
